@@ -20,13 +20,13 @@ function handleFirstRequest (req, res) {
 }                           // Exposite in Localhost
 
 
-app.get('/', handleFirstRequest)
+app.get('/handlesum', handleFirstRequest)
 
 
 function started(){
     console.log(`Example app listening on port ${port}`);
 }
 
-app.listen(port, started)
+app.listen(port, started)   // here the code runs continously. and ready for reciving incoming request
 
 //  exposing 
