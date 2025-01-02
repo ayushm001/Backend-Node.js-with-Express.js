@@ -5,7 +5,7 @@ const port = 3000
 
 function calculatesum (counter) {
     var sum =0;
-    for (var i=0 ; i < counter; i++) {
+    for (var i=0 ; i <= counter; i++) {
         sum = sum+1 ;
     }
     return sum;
@@ -13,14 +13,15 @@ function calculatesum (counter) {
 
 
 function handleFirstRequest (req, res) {
-    var calculatedsum = calculatesum(100);
-    console.log(calculatedsum);
+    var counter = req.query.counter;
+    var calculatedsum = calculatesum(counter);  // allows user to pass values
+    
     var answer = `the sum is ${calculatedsum}`
     res.send(answer)
 }                           // Exposite in Localhost
 
 
-app.get('/handlesum', handleFirstRequest)
+app.get('/handleSum', handleFirstRequest)    //  '/handleSum' - is a route which can callback the  handleFirstRequest function
 
 
 function started(){
