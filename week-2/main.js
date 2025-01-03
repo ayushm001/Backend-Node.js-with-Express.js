@@ -11,6 +11,16 @@ function calculatesum (counter) {
     return sum;
 }                            // operation process
 
+// function handleFirstRequest(req,res) {
+//     console.log(req.params.username1);
+
+//     var counter = req.query.counter;
+//     var calculatedsum = calculatesum(counter);
+
+//     var answer = `the sum is ${calculatedsum}`
+//     res.send(answer);
+// }
+// app.get('/:username1' , handleFirstRequest)
 
 function handleFirstRequest (req, res) {
     var counter = req.query.counter;
