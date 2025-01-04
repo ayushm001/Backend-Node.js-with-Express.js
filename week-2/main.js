@@ -3,10 +3,18 @@ const app = express()
 const port = 3000
 
 
+function middleware1(req, res, next) {
+    console.log("from insider the middlwa re" + req.headers.counter);
+    next();    // this  helps to transmit the request to next function  
+
+}
+app.use(middleware1);  // here whenever we try 
+
+
 function calculatesum (counter) {
     var sum =0;
     for (var i=0 ; i <= counter; i++) {
-        sum = sum+1 ;
+        sum = sum+i ;
     }
     return sum;
 }                            // operation process
@@ -23,16 +31,18 @@ function calculatesum (counter) {
 // app.get('/:username1' , handleFirstRequest)
 
 function handleFirstRequest (req, res) {
-    var counter = req.query.counter;
+    console.log(req.headers);
+    var counter = req.headers.counter;           // another way to send data (header)
     var calculatedsum = calculatesum(counter);  // allows user to pass values
     
+
     var answer = `the sum is ${calculatedsum}`
     res.send(answer)
 }                           // Exposite in Localhost
 
 
-app.get('/handleSum', handleFirstRequest)    //  '/handleSum' - is a route which can callback the  handleFirstRequest function
-
+//app.get('/handleSum', handleFirstRequest)    //  '/handleSum' - is a route which can callback the  handleFirstRequest function
+app.post('/handleSum', handleFirstRequest)
 
 function started(){
     console.log(`Example app listening on port ${port}`);
