@@ -5,12 +5,22 @@ const port = 3000
 app.use(bodyParser.json( ))
 
 
-// function middleware1(req, res, next) {
-//     console.log("from insider the middlwa re" + req.headers.counter);
-//     next();    // this  helps to transmit the request to next function  
+function middleware1(req, res, next) {
+    console.log("from insider the middlwa re" + req.headers.counter);
+    next();    // this  helps to transmit the request to next function  
 
-// }
-// app.use(middleware1);  // here whenever we try 
+}
+app.use(middleware1);  //  
+
+
+// 4 => 1*2*3*4 = 24 
+function calculateMul(counter){
+    var answer = 1;
+    for (var i=1 ; i<= counter; i++) {
+        answer = answer + i;
+    }
+    return answer;
+}
 
 
 function calculatesum (counter) {
@@ -28,8 +38,12 @@ function handleFirstRequest(req,res) {
     console.log(req.query.counter3);
     var calculatedsum = calculatesum(counter);
 
-    var answer = `the sum is ${calculatedsum}`
+    var answer = `the sum is ${calculatedsum} and mul is ${calculateMul}`
     // res.send(answer);
+    var answerObject = {
+        sum: calculatedsum 
+    }
+
     res.status(401).send(answer):
 }
 app.get('/handleSum' , handleFirstRequest)
