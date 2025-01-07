@@ -41,10 +41,11 @@ function handleFirstRequest(req,res) {
     var answer = `the sum is ${calculatedsum} and mul is ${calculateMul}`
     // res.send(answer);
     var answerObject = {
-        sum: calculatedsum 
+        sum: calculatedsum(counter),
+        mul: calculateMul(counter)
     }
 
-    res.status(401).send(answer):
+    res.status(200).send(answerObject):
 }
 app.get('/handleSum' , handleFirstRequest)
 
