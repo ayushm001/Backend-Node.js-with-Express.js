@@ -2,26 +2,14 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.use(bodyParser.json( ))
+// app.use(bodyParser.json( ))
 
 
-function middleware1(req, res, next) {
-    console.log("from insider the middlwa re" + req.headers.counter);
-    next();    // this  helps to transmit the request to next function  
-
-}
-app.use(middleware1);  //  
-
-
-// 4 => 1*2*3*4 = 24 
-function calculateMul(counter){
-    var answer = 1;
-    for (var i=1 ; i<= counter; i++) {
-        answer = answer + i;
-    }
-    return answer;
-}
-
+// function Middleware1( req, res, next) {
+//     console.log(` FROM INSIDE THHE MIDDLEWARE ${req.headers.counter}`);
+//     next();
+// }
+app.use(Middleware1);
 
 function calculatesum (counter) {
     var sum =0;
@@ -31,39 +19,21 @@ function calculatesum (counter) {
     return sum; 
 }                            // operation process
 
-function handleFirstRequest(req,res) {
-
-    var counter = req.query.counter;
-    console.log(req.query.counter2);
-    console.log(req.query.counter3);
-    var calculatedsum = calculatesum(counter);
-
-    var answer = `the sum is ${calculatedsum} and mul is ${calculateMul}`
-    // res.send(answer);
-    var answerObject = {
-        sum: calculatedsum(counter),
-        mul: calculateMul(counter)
-    }
-
-    res.status(200).send(answerObject):
-}
-app.get('/handleSum' , handleFirstRequest)
 
 
 
-// function handleFirstRequest (req, res) {
-//     console.log(req.headers);
-//     var counter = req.headers.counter;           // another way to send data (header)
-//     var calculatedsum = calculatesum(counter);  // allows user to pass values
-    
+function handleFirstRequest (req, res) {
+    console.log(req.headers);
+    var counter = req.headers.counter;           // another way to send data (header)
+    var calculatedsum = calculatesum(counter);  // allows user to pass values
+     
+    var answer = `the sum is ${calculatedsum}`
+    res.send(answer)
+}                           // Exposite in Localhost
 
-//     var answer = `the sum is ${calculatedsum}`
-//     res.send(answer)
-// }                           // Exposite in Localhost
 
+app.post('/handleSum', handleFirstRequest)    //  '/handleSum' - is a route which can callback the  handleFirstRequest function
 
-//app.get('/handleSum', handleFirstRequest)    //  '/handleSum' - is a route which can callback the  handleFirstRequest function
-app.post('/handleSum', handleFirstRequest)
 
 function started(){
     console.log(`Example app listening on port ${port}`);
@@ -71,4 +41,20 @@ function started(){
 
 app.listen(port, started)   // here the code runs continously. and ready for reciving incoming request
 
-//  exposing 
+//  exposing  
+
+
+
+
+
+
+
+
+
+
+
+
+
+// NOTE 
+
+//  Middlewares -> are the way to capture the request in the authonticaton 
