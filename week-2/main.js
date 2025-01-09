@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+var bodyParser = require('body-parser')
 const port = 3000
 
 // app.use(bodyParser.json( ))
@@ -9,7 +10,9 @@ const port = 3000
 //     console.log(` FROM INSIDE THHE MIDDLEWARE ${req.headers.counter}`);
 //     next();
 // }
-app.use(Middleware1);
+// app.use(Middleware1);
+
+app.use(bodyParser.json())  // extr  act the body                         
 
 function calculatesum (counter) {
     var sum =0;
@@ -23,8 +26,9 @@ function calculatesum (counter) {
 
 
 function handleFirstRequest (req, res) {
-    console.log(req.headers);
-    var counter = req.headers.counter;           // another way to send data (header)
+    console.log(req.query);
+    console.log(req.body);   // In this case  it prints Undefined 
+    var counter = req.body.counter;           // another way to send data (header)
     var calculatedsum = calculatesum(counter);  // allows user to pass values
      
     var answer = `the sum is ${calculatedsum}`
