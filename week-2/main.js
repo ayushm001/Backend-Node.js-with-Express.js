@@ -17,7 +17,7 @@ app.use(bodyParser.json())  // extr    act the body
 //
 function calculatesum (counter) {
     var sum =0;
-    for (var i=0 ; i <= counter; i++) {
+    for (var i=1  ; i <= counter; i++) {
         sum = sum+i ;
     }
     return sum; 
@@ -26,7 +26,7 @@ function calculatesum (counter) {
 //
 function calculateMulti(counter) {
     var answer = 1;
-    for (var i = 1; i<= counter; i++) {
+    for (var i = 1; i <= counter; i++) {
         answer= answer * i;
     }
     return answer;
@@ -39,14 +39,15 @@ function calculateMulti(counter) {
 
     var counter = req.body.counter;
 
-    var calculatedSum = calculatesum(counter);
+    var calculatedsum = calculatesum(counter);
     var calculateMulti = calculateMulti(counter);
 
     var answerObject = {
-        sum : calculatedSum,
+        sum : calculatedsum,
         mul : calculateMulti, 
     }  
 
+    res.json(answerObject);
     res.status(200).send(answerObject);
 
 
@@ -73,7 +74,25 @@ function calculateMulti(counter) {
 }                           // Exposite in Localhost
 
 
+function givePage (reeq, res ){
+    res.send(`<head>
+    <title>
+        Hello from page 
+    </title>
+              </head>
+
+               <body>
+    <b> Hi there </b>
+               </body>`) 
+
+     // res.sendFile(__dirname + "/index.html")    // for sending directory
+}
+app.get('/', givePage)
+
+
 app.post('/handleSum', handleFirstRequest)    //  '/handleSum' - is a route which can callback the  handleFirstRequest function
+
+
 
 
 function started(){
@@ -85,7 +104,7 @@ app.listen(port, started)   // here the code runs continously. and ready for rec
 //  exposing  
 
 
-
+ 
 
 
 
