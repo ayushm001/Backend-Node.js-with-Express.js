@@ -4,7 +4,7 @@ function logResonseBody(jsonBody){
 
 
 function callbackFn(result) {
-    result.json().then(logResonseBody)
+    result.json().then(logResonseBody)             // returrns promis then extract
 }
 
 var sendObj = {
@@ -12,4 +12,4 @@ var sendObj = {
 
 };
 
-fetch("http://localost:3000/handleSum", sendObj).then(callbackFn)
+fetch("http://localost:3000/handleSum?counter=10", sendObj).then(callbackFn)
