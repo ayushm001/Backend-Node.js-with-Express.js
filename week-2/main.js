@@ -12,7 +12,7 @@ const port = 3000
 // }
 // app.use(Middleware1);
 
-app.use(bodyParser.json())  // extr    act the body                         
+app.use(bodyParser.json())  // extract the body                         
 
 //
 function calculatesum (counter) {
