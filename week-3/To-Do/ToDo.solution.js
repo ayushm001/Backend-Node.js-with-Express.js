@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const app = express();
 
 app.use(bodyParser.json());
 
-let todos = [];
+
+let todos = [];             // creates an empty list (array) to store all your todos in the server's memory. 
+                           //  It’s like a temporary notepad where your todos are saved while the server is running. (incase iff we restart the server the list gets erased)
 
 function findIndex(arr, id) {
   for (let i = 0; i < arr.length; i++) {
@@ -25,8 +26,6 @@ function removeAtIndex(arr, index) {
 app.get('/todos', (req, res) => {
   res.json(todos);
 });
-
-
 
 app.post('/todos', (req, res) => {
   const newTodo = {
@@ -48,10 +47,9 @@ app.delete('/todos/:id', (req, res) => {
     res.status(200).send();
   }
 });
-
 // for all other routes, return 404
 app.use((req, res, next) => {
   res.status(404).send();
-});
+}); 
 
 app.listen(3000);
