@@ -38,8 +38,6 @@ app.post('/todos', (req, res) => {
   res.status(201).json(newTodo);
 });
 
- 
-
 
 app.delete('/todos/:id', (req, res) => {
   const todoIndex = findIndex(todos, parseInt(req.params.id));
@@ -55,6 +53,5 @@ app.delete('/todos/:id', (req, res) => {
 app.use((req, res, next) => {
   res.status(404).send();
 });
-
 
 app.listen(3000);
