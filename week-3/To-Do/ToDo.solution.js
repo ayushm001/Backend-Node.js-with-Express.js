@@ -27,6 +27,8 @@ app.get('/todos', (req, res) => {
   res.json(todos);
 });
 
+
+var ctr = 1;
 app.post('/todos', (req, res) => {
   const newTodo = {
     id: Math.floor(Math.random() * 1000000), // unique random id
@@ -47,6 +49,8 @@ app.delete('/todos/:id', (req, res) => {
     res.status(200).send();
   }
 });
+
+  
 // for all other routes, return 404
 app.use((req, res, next) => {
   res.status(404).send();
