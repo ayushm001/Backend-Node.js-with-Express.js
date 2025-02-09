@@ -6,9 +6,9 @@ app.use(bodyParser.json());
 
 
 let todos = [];             // creates an empty list (array) to store all your todos in the server's memory. 
-                           //  It’s like a temporary notepad where your todos are saved while the server is running. (incase iff we restart the server the list gets erased)
+                           //  It’s like a temporary notepad where your todos are saved while the server is running. (incase if we restart the server the list gets erased)
 
-function findIndex(arr, id) {             // findIndex - itterates over the array and find theindexx at which the ceratin ID is present 
+function findIndex(arr, id) {             // findIndex - itterates over the array and find the index at which the ceratin ID is present. 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].id === id) return i;
   }
@@ -30,12 +30,12 @@ app.get('/todos', (req, res) => {
 
 var ctr = 1;
 app.post('/todos', (req, res) => {
-  const newTodo = {
-    id: ctr,
-    // id: Math.floor(Math.random() * 1000000), // unique random id
-    title: req.body.title,
-    description: req.body.description
-  };
+  var obj = {
+    name : "Ayushman",
+    age : "22"
+  }
+  console.log(obj.name);
+  
   ctr+1;
   todos.push(newTodo);
   res.status(201).json(newTodo);
