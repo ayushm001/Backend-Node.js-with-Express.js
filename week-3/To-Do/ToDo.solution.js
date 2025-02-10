@@ -8,6 +8,25 @@ app.use(bodyParser.json());
 let todos = [];             // creates an empty list (array) to store all your todos in the server's memory. 
                            //  It’s like a temporary notepad where your todos are saved while the server is running. (incase if we restart the server the list gets erased)
 
+
+[
+  {
+    description: "ABCD",
+    title: "fwefw",
+    id: 1
+  },
+  {
+    description: "SDFG",
+    title: "fwefw",
+    id: 2
+  },
+  {
+    description: "XYZS",
+    title: "fwefw",
+    id: 3
+  }
+]
+
 function findIndex(arr, id) {             // findIndex - itterates over the array and find the index at which the ceratin ID is present. 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].id === id) return i;
@@ -20,7 +39,7 @@ function removeAtIndex(arr, index) {
   for (let i = 0; i < arr.length; i++) {
     if (i !== index) newArray.push(arr[i]);
   }
-  return newArray;
+  return newArray; 
 }
 
 app.get('/todos', (req, res) => {
@@ -30,13 +49,13 @@ app.get('/todos', (req, res) => {
 
 var ctr = 1;
 app.post('/todos', (req, res) => {
-  var obj = {
-    name : "Ayushman",
-    age : "22"
-  }
-  console.log(obj.name);
-  
-  ctr+1;
+  const newTodo = {
+    // id: Math.floor(Math.random() * 10000000),   //Generates unique numb
+    id : ctr,
+    title: req.body.title,
+    description: req.body.description
+  };
+  ctr = ctr + 1;
   todos.push(newTodo);
   res.status(201).json(newTodo);
 });
