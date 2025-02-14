@@ -60,7 +60,7 @@ app.post('/todos', (req, res) => {
   res.status(201).json(newTodo);
 });
 
-
+// DELETE 
 app.delete('/todos/:id', (req, res) => {
   const todoIndex = findIndex(todos, parseInt(req.params.id));
   if (todoIndex === -1) {
