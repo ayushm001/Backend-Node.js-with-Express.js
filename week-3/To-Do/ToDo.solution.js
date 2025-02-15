@@ -29,7 +29,7 @@ let todos = [];             // creates an empty list (array) to store all your t
 
 function findIndex(arr, id) {             // findIndex - itterates over the array and find the index at which the ceratin ID is present. 
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i].id === id) return i;
+    if (arr[i].id === id) return i;              
   }
   return -1;
 }
@@ -43,7 +43,11 @@ function removeAtIndex(arr, index) {
 }
 
 app.get('/todos', (req, res) => {
-  res.json(todos);
+  fs.readFile("todo.json", "utf8", (err, data) => {
+    var answer = JSON.parse(data);               //   it parse the same ting but in a object form 
+    res.json(answer);
+  });
+  // res.json(todos);
 });
 
 
