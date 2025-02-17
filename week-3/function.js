@@ -29,3 +29,11 @@ const fs = require("fs");
 fs.readFile("a.txt","utf-8",  (err, data) => {           
    console.log(data);
 })
+
+
+
+// let numbers = [10, 20, 30, 40, 50, 60];
+
+// numbers.splice(2, 3); // Remove 1 element at index 2
+
+// console.log(numbers); // [10, 20, 40, 50, 60]

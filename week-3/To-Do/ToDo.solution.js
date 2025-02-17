@@ -34,6 +34,8 @@ function findIndex(arr, id) {             // findIndex - itterates over the arra
   return -1;
 }
 
+// removing index
+
 function removeAtIndex(arr, index) {
   let newArray = [];
   for (let i = 0; i < arr.length; i++) {
@@ -41,6 +43,7 @@ function removeAtIndex(arr, index) {
   }
   return newArray; 
 }
+
 
 app.get('/todos', (req, res) => {
   fs.readFile("todo.json", "utf8", (err, data) => {
