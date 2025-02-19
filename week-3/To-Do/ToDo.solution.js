@@ -5,7 +5,8 @@ const app = express();
 app.use(bodyParser.json());
 
 
-let todos = [];             // creates an empty list (array) to store all your todos in the server's memory. 
+let todos = [];              // In memory object
+                            // creates an empty list (array) to store all your todos in the server's memory. 
                            //  It’s like a temporary notepad where your todos are saved while the server is running. (incase if we restart the server the list gets erased)
 
 
@@ -47,7 +48,7 @@ function removeAtIndex(arr, index) {
 
 app.get('/todos', (req, res) => {
   fs.readFile("todo.json", "utf8", (err, data) => {
-    var answer = JSON.parse(data);               //   it parse the same ting but in a object form 
+    var answer = JSON.parse(data);               //   it parse the same thing but in a object form 
     res.json(answer);
   });
   // res.json(todos);
