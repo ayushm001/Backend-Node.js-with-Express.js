@@ -23,10 +23,10 @@ function removeAtIndex(arr, index) {
 }
 
 
-app.get('/todos', (req, res) => {
+app.get('/todos', (req, res) => {                   // Helps to retrive the list of todos 
   fs.readFile("todos.json", "utf8", (err, data) => {
     if (err) throw err;
-    res.json(JSON.parse(data));
+    res.json(JSON.parse(data));    // Here, it reads the JSON string from todos.json and turns it into a JavaScript array of todos.
     // res.json(data)
   });
 });
@@ -94,3 +94,11 @@ app.listen(3000);
 
 
 // what is JSON ? ->       Anything that look like javascript object
+
+
+
+//  what is JSON.parse(data) does ??  ->   This function takes a JSON string (in this case, the contents of your todos.json file) and converts it back into a JavaScript object or array.
+
+
+//  what is JSON.stringify(todos) does ??  ->   This function takes a JavaScript object or array (in this case, your array of todos) and converts it into a JSON string.
+//                                               Here, it takes your array of todos and turns it into a JSON string to save it back into the todos.json file.
