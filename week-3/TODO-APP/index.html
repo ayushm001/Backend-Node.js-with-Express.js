@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
+    <title>TODO APP </title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<body>
+<script>
+    function onPress() {
+        alert("Hello")
+    }
+</script>
+<body style="background-color: grey;">
 
-   <h1> Todo Title </h1>
+<div class="main" style="margin-top: 18%;  margin-left: 40%">
 
-    <input type="text" id="title" > </input>
-    <br>
-    Todo Description
-    <input type="text" id="title" > </input>
-    <br>
+    <div class="ct1">
+        <h4> Todo Title</h4>
+        <input type="text" id="title">
+     </div>
 
-    <button onclick="onPress()"> send todo</button>
+
+     <div class="ct2">   
+        <h4> Todo Title</h4>
+        <input type="text" id="title">
+     </div>
+ 
+     <div class="btn" style="margin-top: 20px; margin-left: 50px;">
+         <button onclick="onPress()"> send todo</button>
+     </div>
+
+</div>
+   
     
 </body>
 </html>
