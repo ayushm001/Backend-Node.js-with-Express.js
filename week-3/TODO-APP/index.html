@@ -14,7 +14,7 @@
     }
 
     function callback(resp){
-        resp.json().then(parseResponse)
+        resp.json().then(parseResponse)                         // takes resp as I/P, converts it to JSON format. once the conversion is complete it passes the data to parseResponse 
     }
     function onPress() {
         // alert("Hello")
@@ -33,7 +33,7 @@
         <div class="ct1">
             <h4> Todo Title</h4>
             <input type="text" id="title">
-        </div>
+        </div> 
 
 
         <div class="ct2">
