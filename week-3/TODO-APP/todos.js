@@ -87,4 +87,4 @@ app.listen(3000);
 //(like loading data from another website) and is blocked because the server isn't set up to allow it.
 
 // CORS stands for Cross-Origin Resource Sharing. It's a security feature built into web browsers to prevent
-//  a website from making requests to a different website unless explicitly allowed by that other website.
+//  a website from making requests to a different website unless explicitly allowed by that other website. 
