@@ -3,6 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require("path");
 
+// const cors = require("cors");    // Allows the request code from every where
+// app.use(cors());                 // Allows the request code from every where
+
+
 const app = express();
 
 app.use(bodyParser.json());

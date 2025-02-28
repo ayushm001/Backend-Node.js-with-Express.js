@@ -17,9 +17,21 @@
         resp.json().then(parseResponse)                         // takes resp as I/P, converts it to JSON format. once the conversion is complete it passes the data to parseResponse 
     }
     function onPress() {
-        // alert("Hello")
+                 // alert("Hello")
+        // fetch("http://localhost:3000/todos", {
+        //     method: "GET"
+        // }).then(callback)
+
+
         fetch("http://localhost:3000/todos", {
-            method: "GET"
+            method: "POST",
+            body: JSON.stringify({
+                title : "Hit Gym",
+                description : "From 7 to 9"
+            }),
+            headers: {
+                "Content-Type" : "application/json"
+            }
         }).then(callback)
     }
 
