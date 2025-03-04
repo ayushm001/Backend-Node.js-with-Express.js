@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP </title>
+
+</head>
+
+<script>
+    function parseResponse (data){
+        console.log(data);
+    }
+
+    function callback(resp){
+        resp.json().then(parseResponse)                         // takes resp as I/P, converts it to JSON format. once the conversion is complete it passes the data to parseResponse 
+    }
+    function onPress() {
+
+        var Title = document.getElementById("title").value;
+        console.log(Title );
+
+                 // alert("Hello")
+        // fetch("http://localhost:3000/todos", {
+        //     method: "GET"
+        // }).then(callback)
+
+
+        fetch("http://localhost:3000/todos", {
+            method: "POST",
+            body: JSON.stringify({
+                title : "Hit Gym",
+                description : "From 7 to 9"
+            }),
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        }).then(callback)
+    }
+
+</script>
+
+
+<body style="background-color: grey;">
+
+    <div class="main" style="margin-top: 18%;  margin-left: 40% ; ">
+
+        <div class="ct1">
+            <h4> Todo Title</h4>
+            <input type="text" id="title">
+        </div> 
+
+
+        <div class="ct2">
+            <h4> Todo Description </h4>
+            <input type="text" id="title">
+        </div>
+
+        <div class="btn" style="margin-top: 20px; margin-left: 50px;">
+            <button onclick="onPress()"> send todo</button>
+        </div>
+
+    </div>
+
+ 
+</body>
+
+</html>
