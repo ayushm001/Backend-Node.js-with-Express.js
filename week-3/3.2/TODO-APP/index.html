@@ -17,9 +17,12 @@
         resp.json().then(parseResponse)                         // takes resp as I/P, converts it to JSON format. once the conversion is complete it passes the data to parseResponse 
     }
     function onPress() {
+  
+        var title = document.getElementById("title").value;
+        // console.log(Title );
 
-        var Title = document.getElementById("title").value;
-        console.log(Title );
+        var description = document.getElementById("description").value;
+        // console.log(description );
 
                  // alert("Hello")
         // fetch("http://localhost:3000/todos", {
@@ -30,8 +33,8 @@
         fetch("http://localhost:3000/todos", {
             method: "POST",
             body: JSON.stringify({
-                title : "Hit Gym",
-                description : "From 7 to 9"
+                title : title,
+                description : description
             }),
             headers: {
                 "Content-Type" : "application/json"
@@ -54,12 +57,13 @@
 
         <div class="ct2">
             <h4> Todo Description </h4>
-            <input type="text" id="title">
+            <input type="text" id="description">
         </div>
 
         <div class="btn" style="margin-top: 20px; margin-left: 50px;">
             <button onclick="onPress()"> send todo</button>
         </div>
+        
 
     </div>
 

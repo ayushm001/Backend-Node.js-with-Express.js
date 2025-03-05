@@ -1,15 +1,14 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require("path");
 
-// const cors = require("cors");    // Allows the request code from every where
-// app.use(cors());                 // Allows the request code from every where
-
+const path = require("path"); //
 
 const app = express();
 
+const cors = require("cors"); //
+
 app.use(bodyParser.json());
+app.use(cors()); //
 
 let todos = [];
 
@@ -72,23 +71,9 @@ app.delete('/todos/:id', (req, res) => {
   }
 });
 
-// for all other routes, return 404
-// app.use((req, res, next) => {
-//   res.status(404).send();
-// });
-
 app.get("/",  (req, res) => {
   res.sendFile(path.join(__dirname, "index.html")); 
 })
 
 app.listen(3000);
-
-
-
-
-// CORS error -- > 
-//  A CORS error happens when a web page tries to make a request to a different domain 
-//(like loading data from another website) and is blocked because the server isn't set up to allow it.
-
-// CORS stands for Cross-Origin Resource Sharing. It's a security feature built into web browsers to prevent
-//  a website from making requests to a different website unless explicitly allowed by that other website. 
+   
