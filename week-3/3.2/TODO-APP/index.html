@@ -11,6 +11,16 @@
 <script>
     function todosCallback(data){
         console.log(data);                                  //logs the list of todos
+
+        var ParseElement = document.getElementById("context");
+        // ParseElement.innerHTML= JSON.stringify(data);
+
+        for (var i=0; i<data.length; i++ ) {
+            var childElement = document.createElement("div");
+            childElement.innerHTML =  data[i].title       //" DEMO TASKS ARE HERE :)  ";
+            ParseElement.appendChild(childElement);
+        }
+  
     }
 
     function getDataCallback(resp){
@@ -23,7 +33,7 @@
         }).then(getDataCallback)
     }
 
-    getData();                                      // calls getData when the page loads 
+    getData();                                                 // calls getData when the page loads 
 
     function parseResponse (data){         
         console.log(data);
@@ -80,11 +90,12 @@
             <button onclick="onPress()"> send todo</button>
         </div>
         
-        <div class="context" style="margin-top: 20px; margin-left: 50px;">
-           <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum.</span>
-        </div>
-
     </div>
+
+    <div id="context" style="margin-top: 40px; margin-left:28%; font-weight: bold;">
+       
+     </div>
+
 
  
 </body>
