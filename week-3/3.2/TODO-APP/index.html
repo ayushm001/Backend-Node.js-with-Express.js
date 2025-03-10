@@ -9,6 +9,21 @@
 </head>
 
 <script>
+    function deleteDone(){
+        console.log(`Done delete ${data.id}`);
+        
+    }
+    function DeleteTodo(id){
+        console.log(id);
+
+        fetch("http://localhost:3000/todos/"+ id, {                                // Handeling thhe DELETE 
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(deleteDone)
+    }
+
     function todosCallback(data) {
         console.log(data);                                  //logs the list of todos
 
@@ -26,6 +41,9 @@
 
             var grandChildElement3 = document.createElement("Button")
             grandChildElement3.innerHTML = "Delete"
+
+            grandChildElement3.setAttribute("onclick", "DeleteTodo(" + data[i].id + ")")
+
 
 
             childElement.appendChild(grandChildElement1)
@@ -64,7 +82,6 @@
 
         var grandChildElement3 = document.createElement("Button")
         grandChildElement3.innerHTML = "Delete"
-
 
         childElement.appendChild(grandChildElement1)
         childElement.appendChild(grandChildElement2)
