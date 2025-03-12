@@ -15,13 +15,13 @@
     }
     function DeleteTodo(id){
         console.log(id);
-
-        fetch("http://localhost:3000/todos/"+ id, {                                // Handeling thhe DELETE 
+        fetch("http://localhost:3000/todos/"+ id, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(deleteDone)
+ 
     }
 
     function todosCallback(data) {
